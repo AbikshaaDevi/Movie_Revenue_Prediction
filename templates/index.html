@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TMDB Box Office Revenue Prediction</title>
+</head>
+<body bgcolor="#f7f7f7">
+    <div style="background-color: #ffb67b; width: 550px; margin: 40px auto; padding: 20px; border-radius: 8px;">
+        <h2 align="center">Movie Revenue Prediction</h2>
+        <form method="post" action="/predict">
+            <table align="center" cellpadding="6" cellspacing="0">
+                <tr>
+                    <td><label for="budget">Budget (INR):</label></td>
+                    <td><input type="number" step="any" id="budget" name="budget" placeholder="e.g. 100000000" required></td>
+                </tr>
+                <tr>
+                    <td><label for="popularity">Popularity:</label></td>
+                    <td><input type="number" step="any" id="popularity" name="popularity" placeholder="e.g. 10.5" required></td>
+                </tr>
+                <tr>
+                    <td><label for="runtime">Runtime (minutes):</label></td>
+                    <td><input type="number" step="any" id="runtime" name="runtime" placeholder="e.g. 120" required></td>
+                </tr>
+                <tr>
+                    <td valign="top"><label>Genres:</label></td>
+                    <td>
+                        {% for genre in genres %}
+                        <input type="checkbox" id="{{genre}}" name="genres" value="{{genre}}">
+                        <label for="{{genre}}">{{genre}}</label><br>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center" style="padding-top: 10px;">
+                        <input type="submit" value="Predict Revenue">
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+        {% if prediction %}
+        <div style="margin-top: 20px; text-align: center; font-weight: bold;">
+            Prediction: {{ prediction }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
