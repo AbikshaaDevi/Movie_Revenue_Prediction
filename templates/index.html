@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>TMDB Box Office Revenue Prediction</title>
+    <meta charset="UTF-8" />
+    <title>TMDB Movie Revenue Prediction (Ridge Regression)</title>
 </head>
 <body bgcolor="#f7f7f7">
-    <div style="background-color: #ffb67b; width: 550px; margin: 40px auto; padding: 20px; border-radius: 8px;">
-        <h2 align="center">Movie Revenue Prediction</h2>
+    <div style="background-color: #c8d8e4; width: 550px; margin: 40px auto; padding: 20px; border-radius: 8px;">
+        <h2 align="center">Movie Revenue Prediction (INR)</h2>
         <form method="post" action="/predict">
             <table align="center" cellpadding="6" cellspacing="0">
                 <tr>
@@ -25,23 +25,23 @@
                     <td valign="top"><label>Genres:</label></td>
                     <td>
                         {% for genre in genres %}
-                        <input type="checkbox" id="{{genre}}" name="genres" value="{{genre}}">
-                        <label for="{{genre}}">{{genre}}</label><br>
+                            <input type="checkbox" id="{{ genre }}" name="genres" value="{{ genre }}">
+                            <label for="{{ genre }}">{{ genre }}</label><br>
                         {% endfor %}
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2" align="center" style="padding-top: 10px;">
-                        <input type="submit" value="Predict Revenue">
+                        <input type="submit" value="Predict Revenue" />
                     </td>
                 </tr>
             </table>
         </form>
 
         {% if prediction %}
-        <div style="margin-top: 20px; text-align: center; font-weight: bold;">
-            Prediction: {{ prediction }}
-        </div>
+            <div style="margin-top: 20px; text-align: center; font-weight: bold;">
+                Prediction: {{ prediction }}
+            </div>
         {% endif %}
     </div>
 </body>
